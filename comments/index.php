@@ -1,5 +1,7 @@
 <html lang="ru">
+
 <head>
+    <? require 'db.php'?>   
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <title>Comments</title>
@@ -7,7 +9,16 @@
 <body>
  <section>
    <div class="container">
-       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non eum, vitae fugiat. Accusamus, provident doloribus dolorum sint rem vel qui ducimus perferendis, vitae ex minima, ratione ipsum soluta totam natus.
+       <? 
+       foreach( $result  as  $arry )
+         {
+             echo "<div class='comm_block'>";
+             echo '<b>', $arry["name"]  .  "</b>, ";
+             echo $arry["email"]  .  "<br>";
+             echo 'категория - ' .$arry["category"]  .  "<br>";
+             echo "<hr>" .$arry["comment"]  .  "</div>";
+          }
+       ?>
    </div>
       
    <div class="comment">
