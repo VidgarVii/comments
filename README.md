@@ -6,20 +6,16 @@
 SQL
 
 CREATE TABLE `category` (
-  `id` INT(20) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(30),
-  PRIMARY KEY  (`id`)
+  `name` VARCHAR(20) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY  (`name`)
 );
 
-CREATE TABLE `comment` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE `comments` (
   `name` VARCHAR(30),
   `email` VARCHAR(20),
-  `category` INT,
-  `comment` TEXT(225),
-  `time` DATETIME,
-  PRIMARY KEY  (`id`)
+  `category` VARCHAR(20),
+  `comment` TEXT(500)
 );
 
 
-ALTER TABLE `comment` ADD CONSTRAINT `comment_fk1` FOREIGN KEY (`category`) REFERENCES category(`id`);
+ALTER TABLE `comments` ADD CONSTRAINT `comments_fk1` FOREIGN KEY (`category`) REFERENCES category(`name`);
