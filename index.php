@@ -1,9 +1,9 @@
 <html lang="ru">
 
 <head>
-    <? require 'db.php'?>   
+    <? require 'php/db.php'?>   
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Comments</title>
 </head>
 <body>
@@ -28,8 +28,8 @@
       
    <div class="comment">
       <p class="warning">Для отправки комментария заполните все поля!</p>
-      <? echo $error_mail; ?>
-       <form action="form.php" method="POST">
+      
+       <form id="comnt_form" action="php/form.php" method="POST">
           <div>
               <label for="name">Введите Ваше Ф.И.О.</label>
               <input type="text" id="name" name="name" checked autocomplete="additional-name" placeholder="Иванов Иван Иванович" required maxlength="20">
