@@ -13,18 +13,20 @@ catch(  PDOException $e  ) {
     echo "Тут: ".$e->getLine();
 }
 
+
+//Получаем запись из БД
+//Коменты    
 $answer = $db->query('SELECT * FROM comments');
-$result = $answer->FETCHALL(PDO::FETCH_ASSOC);
+$res_comment = $answer->FETCHALL(PDO::FETCH_ASSOC);
 
-foreach( $result  as  $arry )
-{
-    echo $arry["name"]  .  "<br>";
-    echo $arry["email"]  .  "<br>";
-    echo $arry["category"]  .  "<br>";
-    echo $arry["comment"]  .  "<br>";
-}
+//Категории
+$category = $db->query('SELECT * FROM category');
+$res_categ = $category->FETCHALL(PDO::FETCH_ASSOC);
 
+
+//Добавляем запись в БД
 $quest = $db->prepare("INSERT INTO category (name) VALUES (:name)");
 $quest->bindParam(':name', $name);
 $name = 'WW';
-$quest->execute();
+
+//$quest->execute();
