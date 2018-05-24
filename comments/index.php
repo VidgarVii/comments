@@ -10,36 +10,44 @@
  <section>
    <div class="container">
        <? 
-       foreach( $result  as  $arry )
+       $x = count($res_comment)-4;
+        $i=0;
+       foreach( $res_comment  as  $arry )
          {
+           $i++;
+           if($i>$x){
              echo "<div class='comm_block'>";
              echo '<b>', $arry["name"]  .  "</b>, ";
              echo $arry["email"]  .  "<br>";
              echo 'категория - ' .$arry["category"]  .  "<br>";
              echo "<hr>" .$arry["comment"]  .  "</div>";
-          }
+          }}
+  
        ?>
    </div>
       
    <div class="comment">
       <p class="warning">Для отправки комментария заполните все поля!</p>
-       <form action="" method="get">
+      <? echo $error_mail; ?>
+       <form action="form.php" method="POST">
           <div>
               <label for="name">Введите Ваше Ф.И.О.</label>
-              <input type="text" id="name" name="name" checked autocomplete="additional-name" placeholder="Иванов Иван Иванович" pattern="[A-Za-zА-Яа-яЁё]" required maxlength="20">
+              <input type="text" id="name" name="name" checked autocomplete="additional-name" placeholder="Иванов Иван Иванович" required maxlength="20">
               </div>
            
            <div>
                <label for="mail">Ваш e-mail</label> 
-               <input type="email" id="mail" placeholder="ivan@mail.ru" required maxlength="20">
+               <input type="email" id="mail" name='email' placeholder="ivan@mail.ru" required maxlength="20">
            </div>
            <div>
               Выберите категорию
                   <select name="category">
-                      <option value="1">Renault</option>
-                      <option value="2">Nissan</option>
-                      <option value="3">Mersedess</option>
-                      <option value="4">other</option>
+                     <?
+                      foreach ( $res_categ as $cat ) {
+                  echo '<option value=' .$cat['name'] .'>' .$cat['name'] .'</option>';
+                      }
+                      ?>
+                     
                   </select>
            </div>
            <div>
